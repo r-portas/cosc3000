@@ -11,4 +11,9 @@ scatter(data.Price, data.Mileage);
 plot(data.Price, f);
 hold off;
 
+% Categorize the car makes
+CarMakes = categorical(data.Make);
+
 % Using Engine Size and Make as multiple regression to fit the price data
+% plot(CarMakes, data.Price);
+histogram();

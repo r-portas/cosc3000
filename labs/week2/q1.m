@@ -14,25 +14,25 @@ pb = polyval(polyb, data.x);
 polyc = polyfit(data.x, data.c, n);
 pc = polyval(polyc, data.x);
 
+% A points
 subplot(2, 2, 1);
 hold on;
-% A points
 scatter(data.x, data.a)
 plot(data.x, pa);
 title('A points');
 hold off;
 
+% B points
 subplot(2, 2, 2);
 hold on;
-% B points
 scatter(data.x, data.b);
 plot(data.x, pb);
 title('B points');
 hold off;
 
+% C points
 subplot(2, 2, 3);
 hold on;
-% C points
 scatter(data.x, data.c);
 plot(data.x, pc);
 title('C points');
@@ -47,7 +47,13 @@ hold on;
 scatter(data.x, data.a);
 
 % Draw the prediction intervals
-plot(data.x, Y-DELTA, 'b--');
-plot(data.x, Y+DELTA, 'r--');
+handle1 = plot(data.x, Y-DELTA);
+handle2 = plot(data.x, Y+DELTA);
 title('Prediction Intervals');
 hold off;
+
+% Modify the handles
+set(handle1, 'LineStyle', '--');
+set(handle1, 'Color', 'b');
+set(handle2, 'LineStyle', '--');
+set(handle2, 'Color', 'r');
