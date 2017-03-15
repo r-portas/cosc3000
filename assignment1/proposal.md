@@ -35,10 +35,23 @@ Sample:
 
 URL: [https://data.qld.gov.au/dataset/crime-locations-2000-present](https://data.qld.gov.au/dataset/crime-locations-2000-present)
 
+How to access:
+
+```bash
+curl https://data.police.qld.gov.au/api/boundary?name=brisbane&returngeometry=true&maxresults=5
+```
+
 ### Neighbourhood Watch Areas
 
 URL: [https://data.qld.gov.au/en/dataset/qps-neighbourhood-watch-areas](https://data.qld.gov.au/en/dataset/qps-neighbourhood-watch-areas)
 
+The file is provided in a Shapefile format which can be easily imported into
+Matlab
+
+
 ### QPS Police Beat Locations
 
 URL: [https://data.qld.gov.au/en/dataset/qps-police-beats](https://data.qld.gov.au/en/dataset/qps-police-beats)
+
+The file is provided in a Shapefile format which can be easily imported into
+Matlab
