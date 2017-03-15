@@ -13,14 +13,20 @@ and the impact it has on the crime rates.
 ## Why
 
 The crime data is specific to Queensland and the Brisbane area, thus its
-spatially relevant to where we live. Additionally crime is a part of our
-society 
+spatially relevant to where we live.
 
 ## How
 
 I will be using Matlab with Webmaps to visualize the geolocation data and
 plotting quantitative data.
 
+The data comes in the form of either a CSV file, Shapefile or REST API.
+
+The CSV file can easily be read using the `csvread` function, which returns a
+array.
+
+The Shapefile can easily be read using the `shaperead` command, which returns a
+geographic data structure containing the data.
 
 ## Data sources
 
