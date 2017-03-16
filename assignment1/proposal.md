@@ -36,7 +36,7 @@ URL: [https://data.qld.gov.au/dataset/offence-numbers-police-divisions-monthly-f
 
 Sample:
 
-![Sample Data](resources/offence_by_numbers.png){ width=50% }
+![Sample Data](resources/offence_by_numbers.png){ width=75% }
 \ 
 
 ### Crimes by Location
