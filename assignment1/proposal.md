@@ -35,7 +35,9 @@ geographic data structure containing the data.
 URL: [https://data.qld.gov.au/dataset/offence-numbers-police-divisions-monthly-from-july-2001/resource/34f74f13-3269-4916-b1a8-c5ba825972af](https://data.qld.gov.au/dataset/offence-numbers-police-divisions-monthly-from-july-2001/resource/34f74f13-3269-4916-b1a8-c5ba825972af)
 
 Sample:
-![Sample Data](resources/offence_by_numbers.png)
+
+![Sample Data](resources/offence_by_numbers.png){ width=50% }
+\ 
 
 ### Crimes by Location
 
