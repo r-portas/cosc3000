@@ -1,5 +1,11 @@
-# Project Proposal
-### Roy Portas
+---
+title: Project Proposal
+author: Roy Portas
+header-includes:
+    - \usepackage{fancyhdr}
+    - \pagestyle{empty}
+    - \lfoot{Roy Portas}
+---
 
 ## What
 
