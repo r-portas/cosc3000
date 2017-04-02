@@ -8,45 +8,46 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: bibliography.bib
 Warning--to sort, need author or key in noauthor_ibm_2012
-You've used 4 entries,
+Warning--to sort, need author or key in noauthor_2004_2017
+You've used 5 entries,
             2849 wiz_defined-function locations,
-            636 strings with 5380 characters,
-and the built_in function-call counts, 1269 in all, are:
-= -- 121
-> -- 27
+            642 strings with 5532 characters,
+and the built_in function-call counts, 1555 in all, are:
+= -- 151
+> -- 29
 < -- 0
-+ -- 11
++ -- 12
 - -- 6
-* -- 42
-:= -- 185
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 15
+* -- 53
+:= -- 212
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 18
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 39
-empty$ -- 151
+cite$ -- 7
+duplicate$ -- 48
+empty$ -- 191
 format.name$ -- 6
-if$ -- 348
+if$ -- 435
 int.to.chr$ -- 0
-int.to.str$ -- 4
+int.to.str$ -- 5
 missing$ -- 1
-newline$ -- 23
+newline$ -- 28
 num.names$ -- 6
-pop$ -- 45
+pop$ -- 58
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 13
 quote$ -- 0
-skip$ -- 113
+skip$ -- 140
 stack$ -- 0
-substring$ -- 21
-swap$ -- 4
+substring$ -- 26
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
-warning$ -- 1
+type$ -- 20
+warning$ -- 2
 while$ -- 6
-width$ -- 5
-write$ -- 40
-(There was 1 warning)
+width$ -- 6
+write$ -- 50
+(There were 2 warnings)

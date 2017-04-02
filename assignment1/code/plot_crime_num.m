@@ -48,6 +48,14 @@ h = set(gca, 'XTickLabels', labels);
 set(h, 'Rotation', 90);
 set(gca, 'XTick', 1:88);
 set(gca, 'YTickLabels', char(months));
-set(gca, 'YTick', length(months));
+set(gca, 'YTick', 1:length(months));
 
 hold off;
+
+
+% Get the most commonly commited crimes
+[x, index] = sort(mean(crimes), 'descend')
+
+for i = 1:5
+   labels(index(i))
+end
