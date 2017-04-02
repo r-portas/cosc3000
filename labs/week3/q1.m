@@ -8,7 +8,7 @@ load week3data;
 % plot_data(months, data4, 'Data 4', 4);
 % plot_data(months, data5, 'Data 5', 5);
 
-recurrence_plot(data3);
+tilemap(data4);
 
 function tilemap(data)
     imagesc(reshape(data, [12, 30]));
