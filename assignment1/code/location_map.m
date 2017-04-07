@@ -18,5 +18,6 @@ max_area = max(areas);
 color = parula(numel(S));
 densityColors = makesymbolspec('Polygon', {'area', [0, max_area], 'FaceColor', color});
 geoshow(S, 'DisplayType', 'polygon', 'SymbolSpec', densityColors);
+title('Police division by size')
 colorbar;
 hold off;
