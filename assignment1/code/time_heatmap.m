@@ -23,11 +23,21 @@ colorbar;
 months = sort(unique(d.MonthYear));
 converted = datenum(months);
 crime_sum = sum(transpose(crimes));
+converted = transpose(converted);
+
+% Estimate the line
+x1 = linspace(min(converted), max(converted));
+[p, S] = polyfit(converted, crime_sum, 2);
+y1 = polyval(p, x1);
+
 
 figure;
+hold on;
 plot(converted, crime_sum);
-plot(converted, fft(crime_sum));
+% plot(x1, y1, 'g-');
+% plot(converted, fft(crime_sum));
 % 12 is MMMyy
 datetick('x', 12);
+hold off;
 xlabel('Time')
 ylabel('Total offences');

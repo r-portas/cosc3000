@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{noauthor_offence_nodate}
+Offence numbers—police divisions—monthly from {July} 2001 - {Data}
+  {\textbar} {Queensland} {Government}.
+\newblock URL:
+  \url{https://data.qld.gov.au/dataset/offence-numbers-police-divisions-monthly-from-july-2001}.
+
 \bibitem{noauthor_ibm_2012}
 {IBM} {SPSS} {Crime} {Prediction} and {Prevention}, Mar. 2012.
 \newblock URL: \url{http://www.ibm.com/software/analytics/spss/11/na/cpp/}.
@@ -9,6 +15,12 @@
 \newblock Page Version ID: 768677697.
 \newblock URL:
   \url{https://en.wikipedia.org/w/index.php?title=2004_in_Australia&oldid=768677697}.
+
+\bibitem{nolan_establishing_2004}
+J.~J. Nolan.
+\newblock Establishing the statistical relationship between population size and
+  {UCR} crime rate: {Its} impact and implications.
+\newblock {\em Journal of Criminal Justice}, 32(6):547--555, Nov. 2004.
 
 \bibitem{palantir_technologies_law_nodate}
 {Palantir Technologies}.

@@ -17,6 +17,11 @@ end
 % Get the totals for each region
 regions.Total = totals;
 
+% Get the 10 suburbs with most crime
+[x, i] = sort(totals, 'descend');
+crime_totals = x(1:10);
+most_crimes = i(1:10);
+
 hold on;
 worldmap([-30, -9.5], [136.10, 155.68]);
 land = shaperead('landareas.shp', 'UseGeoCoords', true);
@@ -38,6 +43,11 @@ max_crimes = max(crime_num);
 color = parula(numel(S));
 densityColors = makesymbolspec('Polygon', {'totalCrime', [0, max_crimes], 'FaceColor', color});
 geoshow(S, 'DisplayType', 'polygon', 'SymbolSpec', densityColors);
-title('Police division by crime density')
+
+for i = 1:length(most_crimes)
+    temp = S(most_crimes(i));
+    textm(nanmean(temp.Lat), nanmean(temp.Lon), temp.NAME, 'FontWeight', 'Bold', 'Color', 'r');
+end
+
 colorbar;
 hold off;
