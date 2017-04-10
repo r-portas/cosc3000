@@ -11,8 +11,7 @@
 \title{Queensland Crime Data Analysis}
 \author{Roy Portas - s4356084}
 \date{\today}
-\maketitle
-
+\maketitle 
 \section{Introduction}
 
 Criminology is the study of causes, nature and prevention of criminal behaviour\cite{roufa_early_nodate}.
@@ -47,6 +46,20 @@ This report aims to analyse and explore crime data for Queensland. A variety of 
 \subsection{Data Sourcing}
 
 The data was downloaded from the Queensland Government data website, \url{data.qld.gov.au}. 
+The following table shows the data sources used for this report.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|p{4cm}|p{10cm}|}
+        \hline
+        Data Source & URL \\
+        \hline
+        QPS Police Stations & https://data.qld.gov.au/dataset/qps-police-stations \\ 
+        Offence numbers by police division & https://data.qld.gov.au/dataset/offence-numbers-police-divisions-monthly-from-july-2001 \\
+        \hline
+    \end{tabular}
+\end{table}
+
 The files were provided as CSV and Shapefiles, which are both common storage formats for this kind of data.
 The files are maintained and updated by Queensland Police, who update it every month with new crime data.
 As this data comes directly from the Queensland Police service, it should be accurate and reliable.
@@ -71,6 +84,9 @@ However the formatting of the police divisions are inconsistent,
 with one dataset using \verb|BRISBANE CITY| with the other using \verb|Brisbane City|. 
 This was fixed by converting all the names to lowercase.
 
+\subsection{Data Analysis}
+
+
 \section{Results}
 
 \subsection{Analysing historic crime data for Queensland}
@@ -89,7 +105,12 @@ Additionally overall offences has been steadily increasing since 2014, with
 2016 having by far the most offences for any year on record.
 August and November of 2016 has spikes in the number of offences.
 
-A spike in crime was noticed during March 2004, this can also be seen in the other  charts below, historical records show that March was when the Brisbane City Council elections happened and Campbell Newman became the Lord Mayor of Brisbane\cite{noauthor_2004_2017}
+The data also shows a significant drop in crime from December 2010 to February 2011.
+This correlates with the 2010-2011 floods in Queensland, in which three quarters of the council areas
+in Queensland became disaster zones\cite{noauthor_201011_2017}.
+The heatmap indicates that crime dramatically decreased during that time but picked up quickly in March.
+
+A spike in crime was noticed during March 2004, this can also be seen in the other charts below, historical records show that March was when the Brisbane City Council elections happened and Campbell Newman became the Lord Mayor of Brisbane\cite{noauthor_2004_2017}
 
 \begin{figure}[H]
     \caption{Total offences over time}
@@ -144,6 +165,15 @@ There is a spike in crime related offences between 2003 and 2004, where drug off
 and offences against properties all spiked for a short period. This suggests that
 there could have been an event in 2003 that caused these to increase.
 
+\begin{figure}[H]
+    \caption{Recurrence Plot}
+    \centering
+    \includegraphics[width=\linewidth]{../images/recurrence_plot}
+\end{figure}
+
+The above graph is a recurrence plot of the crime data over time.
+This shows how the data recurs over time.
+
 \subsection{Correlating crime data with police divisions}
 
 The crime data can be correlated against police divisions on a map, which gives a
@@ -186,7 +216,9 @@ There are two large rural police divisions that do have higher crime rates. One 
 
 The ten police divisions with the most crime during the month of February 2017 was found to be:
 
-\begin{center}
+\begin{table}[H]
+    \caption{Divisions with most crime in February 2017}
+    \centering
     \begin{tabular}{|c|c|}
         \hline
         Police District & Offences \\
@@ -203,7 +235,34 @@ The ten police divisions with the most crime during the month of February 2017 w
         Fortitude Valley & 1886 \\
         \hline
     \end{tabular}
-\end{center}
+\end{table}
+
+This can be compared to the divisions with the most crime in February 2001. By comparing with the same month of the year, it should avoid any error cause by fluctuations caused by crime happening in certain months more than others.
+
+\begin{table}[H]
+    \caption{Divisions with most crime in February 2001}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Police District & Offences \\
+        \hline
+        Brisbane City & 5636 \\
+        Cairns & 3833 \\
+        Toowoomba & 3127 \\
+        Surfers Paradise & 2613 \\
+        Maroochydore & 2466 \\
+        Fortitude Valley & 2266 \\
+        Southport & 2234 \\
+        Logan Central & 1999 \\
+        Broadbeach & 1973 \\
+        Hendra & 1851 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+The two tables show how crime rates change over time.
+One of the largest changes is the crime in Brisbane City, which decreased significantly over 16 years.
+Additionally Surfers Paradise and Maroochydore dropped off the list since 2001 and Coomera, Caboolture and Bundaburg had increases in crime over that period.
 
 \begin{figure}[H]
     \caption{Cairns crime density}
@@ -230,7 +289,17 @@ Additionally neighboring areas also have increased crime rates, which is expecte
 
 \section{Limitations}
 
+The accuracy of the crime data is limited to the police region.
+The New York government provides similar data, however they provide exact coordinates
+of where crime happens, which allows much finer analysis of where crimes happen.
+
+Additionally finer grain time periods would allow better analysis of data, as it would allow for more
+accurate modelling of the data.
+
+
 \section{Conclusions}
+
+
 
 \section{References}
 

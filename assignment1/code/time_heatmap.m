@@ -41,3 +41,21 @@ datetick('x', 12);
 hold off;
 xlabel('Time')
 ylabel('Total offences');
+
+figure;
+subplot(2, 1, 1);
+plot(converted, crime_sum);
+datetick('x', 12);
+
+
+subplot(2, 1, 2);
+hold on;
+S = zeros(length(crime_sum), length(crime_sum));
+for i = 1:length(crime_sum)
+    S(:, i) = abs(repmat(crime_sum(i), length(crime_sum), 1) - crime_sum(:));
+end
+imagesc(length(crime_sum), length(crime_sum), S < 500);
+axis square;
+colormap([1 1 1; 0 0 0]);
+xlabel('Time');
+ylabel('Time');
