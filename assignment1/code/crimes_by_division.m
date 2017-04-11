@@ -2,7 +2,7 @@
 % Processes crimes by region
 %
 
-MONTH = '01-Feb-2001';
+MONTH = '01-Feb-2017';
 
 regions = d(d.MonthYear == MONTH, :);
 
@@ -44,10 +44,20 @@ color = parula(numel(S));
 densityColors = makesymbolspec('Polygon', {'totalCrime', [0, max_crimes], 'FaceColor', color});
 geoshow(S, 'DisplayType', 'polygon', 'SymbolSpec', densityColors);
 
+crimes = zeros(1, length(most_crimes));
+
 for i = 1:length(most_crimes)
-    temp = S(most_crimes(i))
+    temp = S(most_crimes(i));
     textm(nanmean(temp.Lat), nanmean(temp.Lon), temp.NAME, 'FontWeight', 'Bold', 'Color', 'r');
 end
 
 colorbar;
 hold off;
+
+top = struct2cell(S(most_crimes));
+figure;
+bar(cell2mat(top(6, :)));
+set(gca, 'XTickLabel', top(5, :));
+xtickangle(45);
+ylabel('Total Crimes');
+xlim([0, 11]);
