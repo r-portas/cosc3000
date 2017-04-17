@@ -64,7 +64,6 @@ The files were provided as CSV and Shapefiles, which are both common storage for
 The files are maintained and updated by Queensland Police, who update it every month with new crime data.
 As this data comes directly from the Queensland Police service, it should be accurate and reliable.
 The data is accurate to individual months and police divisions, which gives more than enough detail to model crimes in Queensland.
-
 Both CSV and Shapefiles are easy to import into Matlab, thus are suitable datasets to use.
 
 \subsection{Data Processing}
@@ -86,13 +85,14 @@ This was fixed by converting all the names to lowercase.
 
 \subsection{Data Analysis}
 
-
 \section{Results}
 
 \subsection{Analysing historic crime data for Queensland}
 
 The offences per district were aggregated into totals for every month.
 This shows the total number of offences in Queensland each month between January 2001 and December 2016.
+Since the data consists of values over a set of months, it makes sense to visualise it as a heatmap, with months on the x axis, years on the y axis and the color of the resulting box being the intensity of crimes during that time.
+This allows easy inspecting of the data to compare the amount of crime occurring during the year and how it compares to other years.
 
 \begin{figure}[H]
     \caption{Heatmap of crime over time}
@@ -112,17 +112,21 @@ The heatmap indicates that crime dramatically decreased during that time but pic
 
 A spike in crime was noticed during March 2004, this can also be seen in the other charts below, historical records show that March was when the Brisbane City Council elections happened and Campbell Newman became the Lord Mayor of Brisbane\cite{noauthor_2004_2017}
 
+The different types of crimes can be summed together to find the total crime for a month.
+This effectively reduces the dimensionality of the data down from around 87 to 1, which allows easy plotting on a line graph.
+The resulting graph shows the total crime committed per month from 2001 to 2017.
+
 \begin{figure}[H]
     \caption{Total offences over time}
     \centering
     \includegraphics[width=\linewidth]{../images/crime_over_time}
 \end{figure}
 
-The data was also plotted in a line chart to display the total offences over time.
 The chart shows that overall crime has been decreasing from 2001 through to 2010, 
 but starting 2011 crime rates started increasing with the peak in 2016.
 
-Additionally the chart shows that there is a lot of fluctuation from month to month. 
+Additionally the chart shows that there is a lot of fluctuation from month to month.
+To gain more insight into the crime trends, confidence intervals can be introduced to show the fluctuation in the data.
 
 \begin{figure}[H]
     \caption{Total offences over time with 95\% confidence intervals}
@@ -142,7 +146,7 @@ Sorting the crimes by the average number of offences determined that the most co
 \begin{enumerate}
     \item Offences against property
     \item Other offences
-    \item Other theft exculding unlawful entry
+    \item Other theft excluding unlawful entry
     \item Drug offences
     \item Unlawful entry
 \end{enumerate}
@@ -173,6 +177,8 @@ there could have been an event in 2003 that caused these to increase.
 
 The above graph is a recurrence plot of the crime data over time.
 This shows how the data recurs over time.
+More specifically it shows the regions of time when crime is at the lowest.
+
 
 \subsection{Correlating crime data with police divisions}
 
@@ -208,7 +214,7 @@ The police divisions around the Brisbane area are much smaller than anywhere els
     \includegraphics[width=\linewidth]{../images/police_division_by_crime_density}
 \end{figure}
 
-Figure~\ref{fig:crime_density} shows the density of crime in police divisions, the lighter the colour, the more crime happens in that division.
+Figure~\ref{fig:crime_density} shows the density of crime in police divisions for February 2017, the lighter the colour, the more crime happens in that division.
 Immediately it can be seen that there are a few brightly coloured points that stand out.
 
 Furthermore by comparing figure~\ref{fig:police_divisions} and figure~\ref{fig:crime_density}, it can be seen that most of the police divisions with the largest land areas also has the lowest reported offences.
@@ -276,6 +282,20 @@ The two tables show how crime rates change over time.
 One of the largest changes is the crime in Brisbane City, which decreased significantly over 16 years.
 Additionally Surfers Paradise and Maroochydore dropped off the list since 2001 and Coomera, Caboolture and Bundaburg had increases in crime over that period.
 
+By comparing the data from multiple time periods, it can be seen how the crime rates of a division changes over time, as illustrated in the chart below.
+
+\begin{figure}[H]
+    \caption{Division Offences over Time}
+    \centering
+    \includegraphics[width=\linewidth]{../images/top_crime_range}
+\end{figure}
+
+Above is a chart of how the offences in the top crime divisions change over time.
+It can easily be seen that Brisbane City has the largest change in crime over time, with the crime rate being high in 2001 and steadily decreasing over time.
+Cairns on the other hand has had a steadily high crime rate that increased over time.
+Toowoomba had increased crime during 2008, but has since decreased.
+Fortitude Valley and Southport has crime rates that oscillate over time.
+
 \begin{figure}[H]
     \caption{Cairns crime density}
     \centering
@@ -311,7 +331,12 @@ accurate modelling of the data.
 
 \section{Conclusions}
 
+Overall the analysis shows that crime in Queensland has been increasing since 2010.
+Additionally the type of crime that increased in reported offences is `Other Crime', thus offences that does not fit any of Queensland Police's categories.
+Drug related crime has also been increasing over time, but at a slower rate.
 
+Cairns has the most reported crime for any police division in Queensland, with 748 more offences than Toowoomba, the second most reported crime division.
+Additionally unlike most of the other police regions.
 
 \section{References}
 

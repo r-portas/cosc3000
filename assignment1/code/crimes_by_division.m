@@ -2,7 +2,7 @@
 % Processes crimes by region
 %
 
-MONTH = '01-Feb-2017';
+MONTH = '01-Feb-2008';
 
 regions = d(d.MonthYear == MONTH, :);
 
