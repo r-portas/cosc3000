@@ -179,7 +179,6 @@ The above graph is a recurrence plot of the crime data over time.
 This shows how the data recurs over time.
 More specifically it shows the regions of time when crime is at the lowest.
 
-
 \subsection{Correlating crime data with police divisions}
 
 The crime data can be correlated against police divisions on a map, which gives a
@@ -218,7 +217,10 @@ Figure~\ref{fig:crime_density} shows the density of crime in police divisions fo
 Immediately it can be seen that there are a few brightly coloured points that stand out.
 
 Furthermore by comparing figure~\ref{fig:police_divisions} and figure~\ref{fig:crime_density}, it can be seen that most of the police divisions with the largest land areas also has the lowest reported offences.
-There are two large rural police divisions that do have higher crime rates. One is Mount Isa, in the west, and the other is Mackay, in the east. This could be an indication that those two rural divisions could be understaffed.
+Thus suggesting that the more populated areas has more crime.
+There are two large rural police divisions that do have higher crime rates.
+One is Mount Isa, in the west, and the other is Mackay, in the east.
+This could be an indication that those two rural divisions could be understaffed.
 
 The ten police divisions with the most crime during the month of February 2017 was found to be:
 
@@ -290,7 +292,9 @@ By comparing the data from multiple time periods, it can be seen how the crime r
     \includegraphics[width=\linewidth]{../images/top_crime_range}
 \end{figure}
 
-Above is a chart of how the offences in the top crime divisions change over time.
+Above is a chart of how the offences in the top crime divisions change over time,
+specifically comparing crime occurences during 2001, 2008 and 2017.
+By choosing these equally spaced intervals we get a clearer picture of how the crime rate changes over time.
 It can easily be seen that Brisbane City has the largest change in crime over time, with the crime rate being high in 2001 and steadily decreasing over time.
 Cairns on the other hand has had a steadily high crime rate that increased over time.
 Toowoomba had increased crime during 2008, but has since decreased.
@@ -319,15 +323,21 @@ or the area is a military base.
 The crime map for Brisbane shows that the areas with the most crime is Logan City, Brisbane City and Fortitude Valley.
 Additionally neighboring areas also have increased crime rates, which is expected.
 
+The map also shows that the divisions on the southside of the river generally have lower crime than northside suburbs.
+
 \section{Limitations}
 
-The accuracy of the crime data is limited to the police region.
+The accuracy of the crime data is limited to the police region, which doesn't allow fine grain analysis of the data.
+Additionally since the rural police divisions are quite large, it is hard to determine where the crime occurred.
 The New York government provides similar data, however they provide exact coordinates
 of where crime happens, which allows much finer analysis of where crimes happen.
 
 Additionally finer grain time periods would allow better analysis of data, as it would allow for more
 accurate modelling of the data.
 
+Furthermore the dataset only provided data for Queensland.
+It would be more interesting to analyse and visualize crime for all of Australia.
+This would yield more data and make it easier to determine what caused crime spikes.
 
 \section{Conclusions}
 
@@ -335,8 +345,9 @@ Overall the analysis shows that crime in Queensland has been increasing since 20
 Additionally the type of crime that increased in reported offences is `Other Crime', thus offences that does not fit any of Queensland Police's categories.
 Drug related crime has also been increasing over time, but at a slower rate.
 
-Cairns has the most reported crime for any police division in Queensland, with 748 more offences than Toowoomba, the second most reported crime division.
-Additionally unlike most of the other police regions.
+The crime analysis shows that Cairns has the most reported crime for any police division in Queensland, with 748 more offences than Toowoomba, the second most reported crime division.
+Additionally unlike most of the other police regions the crime rates around the surrounding suburbs of Cairns is far lower than expected.
+For example the high crime areas in Brisbane all have neighbouring suburbs with higher than normal levels of crime.
 
 \section{References}
 
