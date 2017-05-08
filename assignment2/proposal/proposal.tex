@@ -8,19 +8,34 @@
 
 \begin{document}
 
+\title{Computer Graphics Project Proposal}
+\author{Roy Portas - s4356084}
+\date{\today}
+\maketitle 
+
 \section*{Project Goal}
 
 To visualize global crime data on a 3d globe of the world.
-The application will be interactive, allowing the user to rotate the global and zoom in.
+The application will be interactive, allowing the user to rotate the global and zoom in, similar to how Google Earth works.
 
 \section*{Purpose of Project}
 
-To use 
+The program will allow users to visualize crime data around the globe.
+It aims to fulfil the same role as a infographic, allowing users to easily visualize and understand the data.
 
 \section*{Computer Graphics Techniques}
 
 The visualization will be created in WebGL 1.0, which allows rendering 3D graphics in any webpage.
 WebGL is implemented in most browsers, and programs can be written using standard JavaScript.
-The WebGL 1.0 API is based on OpenGL ES 2.0
+The WebGL 1.0 API is based on OpenGL ES 2.0, so code will be written in a similar way as the course sample code.
+
+The project will use the following computer graphic techniques:
+\begin{itemize}
+    \item A virtual camera which renders a viewport of the 3d scene using rasterization
+    \item Displaying a 3d globe in the scene and texturing it with a texture of Earth
+    \item Implement controls to rotate the globe
+    \item Use point lighting behind the camera to show the globe and use specular highlighting to improve aesthetics
+    \item Display the locations of crimes on the globe by translating latitude and longitudes to points in the world space
+\end{itemize}
 
 \end{document}

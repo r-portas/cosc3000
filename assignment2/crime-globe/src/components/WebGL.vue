@@ -7,15 +7,25 @@
 </template>
 
 <script>
+import * as axios from 'axios';
+
 export default {
   name: 'WebGL',
   data() {
     return {
       gl: null,
+      shaderProgram: null,
+      shaderUrls: {
+        'shader-fs': './static/shader-fs.glsl',
+        '
+      },
     };
   },
 
   methods: {
+    /**
+     * Initializes the webGL canvas
+     */
     initGL() {
       const canvas = this.$refs.canvas;
 
@@ -30,10 +40,52 @@ export default {
       // Clear the color as well as the depth buffer
       this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
     },
+
+    /**
+     * Initializes the shaders
+     */
+    initShaders() {
+
+    },
+
+    /**
+     * Initializes the buffers
+     */
+    initBuffers() {
+
+    },
+
+    /**
+     * Renders the objects onto the screen
+     */
+    drawScene() {
+    },
+
+    /**
+     * Loads a shader
+     *
+     * @param {string} name - The shader name
+     * @param {string} type - The type of shader, either gl.VERTEX_SHADER or gl.FRAGMENT_SHADER
+     * @returns {Promise}
+     */
+    loadShader(name, type) {
+      axios.get(this.shaderUrls[name])
+        .then((resp) => {
+          const shader = this.gl.createShader(type);
+          this.gl.shaderSource(shader, resp);
+          this.gl.compileShader(shader);
+
+          return shader;
+        });
+    },
   },
 
   mounted() {
     this.initGL();
+    this.initShaders();
+    this.initBuffers();
+
+    this.drawScene();
   },
 };
 </script>
