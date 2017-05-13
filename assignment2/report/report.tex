@@ -116,6 +116,10 @@ For this prototype two shaders where used, a fragment shader and a vertex shader
 The fragment shader in this case just sets up the GPU to use the correct data types for the rest of the code.
 The vertex shader generates coordinates in the clipspace, which is used by the GPU to render the objects correctly.
 
+Once these shaders were created two matrices were set up, one for the model view matrix, the other for the projection matrix.
+The model view matrix transforms coordinates into view coordinates, which is used by the GPU to display the objects.
+The projection matrix is used to used to manage the perspective of the scene.
+
 \subsection{Version 2: ThreeJS}
 
 As the project became more complex, it became hard to manage all the WebGL code.
