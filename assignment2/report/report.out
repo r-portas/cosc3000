@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Methods}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Acquiring Data and Domain Research}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Designing the Object Hierarchy}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Version 1: Pure WebGL}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Version 2: ThreeJS}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Setting up the Scene}{subsection.2.4}% 7
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Meshes and Shading}{subsection.2.4}% 8
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Texturing and Maps}{subsection.2.4}% 9
+\BOOKMARK [3][-]{subsubsection.2.4.4}{Lighting and Specular Maps}{subsection.2.4}% 10
+\BOOKMARK [1][-]{section.3}{Results}{}% 11
+\BOOKMARK [1][-]{section.4}{Discussion}{}% 12
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 13

@@ -6,7 +6,11 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{hyperref}
 \usepackage{color}
+\usepackage{graphicx}
+\usepackage{subfig}
+
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
@@ -62,6 +66,7 @@ The complete model will consist of the following elements:
 
 \begin{itemize}
 	\item The world
+    \item The camera
 	\item The sun (light source)
 	\item The moon, which rotates around the world
 	\item Crime heat maps, which are displaying on the world.
@@ -120,9 +125,124 @@ Once these shaders were created two matrices were set up, one for the model view
 The model view matrix transforms coordinates into view coordinates, which is used by the GPU to display the objects.
 The projection matrix is used to used to manage the perspective of the scene.
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\linewidth]{images/webgl_cube}
+   \caption{Simple WebGL Application}
+   \label{fig:webgl_cube}
+\end{figure}
+
+Figure~\ref{fig:webgl_cube} shows the simple application running.
+The program just shows a cube, without any lighting.
+However the code to generate this cube was quite verbose, luckily there is a variety of Javascript frameworks which provide wrappers around the WebGL interface.
+
+One such framework is ThreeJS, which provides a lot of helper functions to make creating programs easier.
+
 \subsection{Version 2: ThreeJS}
 
 As the project became more complex, it became hard to manage all the WebGL code.
+Thus a third party library called ThreeJS was used.
+ThreeJS provides a lot of useful helper functions to write WebGL applications more easily,
+such support for animations, common geometries and lighting.
+
+\subsubsection{Setting up the Scene}
+
+ThreeJS provides some helper functions on top of WebGL to create scenes more easily.
+
+For a simple application, a sphere was created in the center of the scene with a camera looking at it.
+The projection matrix logic is abstracted into the camera, thus for a 3D application a PerspectiveCamera was used.
+The PerspectiveCamera calculates the projection matrix for visible objects, which saves writing a lot of GSLS code.
+
+The sphere was draw using a simple mesh that does not react to lighting changes and has a solid colour of blue.
+The result is shown in Figure~\ref{fig:plainSphere}.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\linewidth]{images/plain_sphere}
+   \caption{Plain Sphere}
+   \label{fig:plainSphere}
+\end{figure}
+
+\subsubsection{Meshes and Shading}
+
+The sphere looks plain without any lighting applied to it,
+thus the type of mesh was changed to one that supports shading.
+
+ThreeJS supports Physically Based Rendering, which simulates natural light iterations with real world materials\cite{}.
+PBR in ThreeJS uses image based lighting that allows objects in the scene to pick up surrounding colours from the environment.
+
+More specifically ThreeJS uses the Metallic Roughness style of PBR.
+This method uses two maps, one for roughness and one of metalness.
+Roughness is similar to conventional specular maps,
+however is better optimized for real time rendering\cite{}.
+Metalness defines how metallic an object is,
+which affects the way light is reflected from the object.
+
+Adding PBF to the simple sphere model allows light to be reflected from it as well as adding a shadow to the sphere,
+which can be seen in Figure~\ref{fig:pbf_sphere}.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\linewidth]{images/pbf_sphere}
+   \caption{PBF Sphere}
+   \label{fig:pbf_sphere}
+\end{figure}
+
+\subsubsection{Texturing and Maps}
+
+The next step is to apply the texture to the sphere.
+The texture was downloaded from \url{http://www.shadedrelief.com/natural3/index.html},
+which offers high resolution globe images for free.
+
+Texturing the sphere in ThreeJS is easy, it just requires loading the image then applying the texture to the object.
+The final result can be seen in Figure~\ref{fig:textured_sphere}.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\linewidth]{images/textured_sphere}
+   \caption{Textured Sphere}
+   \label{fig:textured_sphere}
+\end{figure}
+
+At the moment the lighting system is extracting the blue colour from the ocean to give the light a blueish hue.
+This will be corrected when the lighting is improved.
+
+Next a bumpmap can be applied to the globe to simulate mountains and valleys on the earth.
+Bump maps do not modify the actual surface, instead the surface normal is is modified as if the surface has been moved.
+This results in a more real looking world.
+The bump maps were downloaded from the same site that provided the earth maps.
+
+\begin{figure}[H]
+    \centering
+    \subfloat[0.05 scale]{{\includegraphics[width=0.3\linewidth]{images/bumpmap_0_05}}}%
+    \qquad
+    \subfloat[0.2 scale]{{\includegraphics[width=0.3\linewidth]{images/bumpmap_0_2}}}%
+    \qquad
+    \subfloat[1 scale]{{\includegraphics[width=0.3\linewidth]{images/bumpmap_1}}}%
+    \qquad
+    \caption{Bump Map Comparison}
+    \label{fig:bumpmap}
+\end{figure}
+
+Figure~\ref{fig:bumpmap} shows different values for scales for the bump maps.
+Choosing the right scale is important for realism, as a too high value will over exaggerate small displacements,
+such as ocean sea levels.
+This effect is shown in the third image.
+However choosing a too small value will not give the desired effect and result in a flat looking planet.
+
+The second scale was chosen, as it provided a nice looking result.
+
+\subsubsection{Lighting and Specular Maps}
+
+The next step is to improve lighting to make the scene look more realistic.
+To do this two lights will be used, one to represent the sun and another that follows the camera.
+
+The sun light will light up the Earth and simulate the earth revolving around the sun.
+It will be the brightest light in the scene.
+
+The second light is a smaller light that follows the camera,
+allowing the sun to be visible when the sun is behind the Earth.
+
 
 \section{Results}
 
