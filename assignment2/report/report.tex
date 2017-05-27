@@ -47,7 +47,7 @@
 The aim of this project is to create a web based visualization of global crime data.
 This will be done through a 3D model of a globe with crime data superimposed on top of it.
 
-The visualization aims t be a easy to use tool for the general public to view crime trends around the world over time.
+The visualization aims to be a easy to use tool for the general public to view crime trends around the world over time.
 
 \section{Methods}
 
@@ -55,7 +55,23 @@ The visualization aims t be a easy to use tool for the general public to view cr
 
 Data was acquired from the website [website].
 
-Before building the web app, research was done on existing solutions, such as Google Earth and ...
+Before building the web app, research was done on existing solutions, such as Google Earth\cite{} and Marble\cite{}.
+
+From looking at existing solutions, some common functionality was found
+
+\begin{itemize}
+	\item Rotating the globe
+	\item Zooming the globe
+	\item High resolution texturing
+	\item Lighting that emulates the sun and day/night cycles
+\end{itemize}
+
+From researching computer graphics methods, some additional concepts that can be applied include:
+
+\begin{itemize}
+	\item Using a bump map to simulate the mountains and valleys of the world
+	\item Specular maps to make the water look reflective
+\end{itemize}
 
 \subsection{Designing the Object Hierarchy}
 
@@ -66,7 +82,7 @@ The complete model will consist of the following elements:
 
 \begin{itemize}
 	\item The world
-    \item The camera
+	\item The camera
 	\item The sun (light source)
 	\item The moon, which rotates around the world
 	\item Crime heat maps, which are displaying on the world.
@@ -210,6 +226,10 @@ This will be corrected when the lighting is improved.
 Next a bumpmap can be applied to the globe to simulate mountains and valleys on the earth.
 Bump maps do not modify the actual surface, instead the surface normal is is modified as if the surface has been moved.
 This results in a more real looking world.
+The bump map looks similar to a standard texture, but is in greyscale with darker colours signifying a greater height and lighter colours representing a lower height.
+ThreeJS will use the Phong reflection model\cite{} to display the bump map onto the globe.
+
+
 The bump maps were downloaded from the same site that provided the earth maps.
 
 \begin{figure}[H]
@@ -240,9 +260,13 @@ To do this two lights will be used, one to represent the sun and another that fo
 The sun light will light up the Earth and simulate the earth revolving around the sun.
 It will be the brightest light in the scene.
 
-The second light is a smaller light that follows the camera,
-allowing the sun to be visible when the sun is behind the Earth.
+This will be implemented as a directional light that points at the Earth,
+as this is more efficient than something like a point light, that will reflect light in all directions.
 
+The second light is a smaller light that follows the camera,
+allowing the globe to be visible when the sun is behind the Earth.
+This light will also be implemented as a directional light and will follow the camera around the scene.
+The target of this light will also be the Earth.
 
 \section{Results}
 
