@@ -44,6 +44,16 @@
 \date{\today}
 \maketitle 
 
+\begin{large}
+    \begin{center}
+        Final product available at \url{https://r-portas.github.io/crime-globe/}
+
+        Source code available at \url{https://github.com/r-portas/crime-globe}
+    \end{center}
+\end{large}
+
+\break
+
 \section{Introduction}
 
 Crime occurs all around the world and is caused by many factors.
@@ -52,14 +62,18 @@ method to visualize this.
 
 The aim of this project is to create a web based visualization of global crime data.
 This will be done through a 3D model of a globe with crime data superimposed on top of it.
+Computer graphics will be utilized to draw this model in 3D and to make it look realistic.
+The goal is to create a realistic looking world and lighting.
 
 The visualization aims to be a easy to use tool for the general public to view crime trends around the world over time.
+Thus for it to be accessible it was decided to build the project using Javascript and WebGL,
+as this means anyone with a web browser can access the project.
 
 \section{Methods}
 
 \subsection{Acquiring Data and Domain Research}
 
-Data was acquired from the website [website].
+Data was acquired from the website \url{https://knoema.com/atlas/topics/Crime-Statistics}.
 
 Before building the web app, research was done on existing solutions, such as Google Earth and Marble.
 
@@ -195,13 +209,13 @@ The result is shown in Figure~\ref{fig:plainSphere}.
 The sphere looks plain without any lighting applied to it,
 thus the type of mesh was changed to one that supports shading.
 
-ThreeJS supports Physically Based Rendering, which simulates natural light iterations with real world materials\cite{}.
+ThreeJS supports Physically Based Rendering, which simulates natural light iterations with real world materials\cite{physically_based_rendering}.
 PBR in ThreeJS uses image based lighting that allows objects in the scene to pick up surrounding colours from the environment.
 
 More specifically ThreeJS uses the Metallic Roughness style of PBR.
 This method uses two maps, one for roughness and one of metalness.
 Roughness is similar to conventional specular maps,
-however is better optimized for real time rendering\cite{}.
+however is better optimized for real time rendering\cite{meshstandardmaterial_2017}.
 Metalness defines how metallic an object is,
 which affects the way light is reflected from the object.
 
@@ -238,7 +252,7 @@ Next a bumpmap can be applied to the globe to simulate mountains and valleys on 
 Bump maps do not modify the actual surface, instead the surface normal is is modified as if the surface has been moved.
 This results in a more real looking world.
 The bump map looks similar to a standard texture, but is in greyscale with darker colours signifying a greater height and lighter colours representing a lower height.
-ThreeJS will use the Phong reflection model\cite{} to display the bump map onto the globe.
+ThreeJS will use the Phong reflection model\cite{meshstandardmaterial_2017} to display the bump map onto the globe.
 
 
 The bump maps were downloaded from the same site that provided the earth maps.
@@ -373,14 +387,26 @@ This was simply done by changing the red value depending on the crime rate of th
    \label{fig:crime_spheres}
 \end{figure}
 
-\subsection{User Interaction}
+\subsection{User Interaction and Camera}
 
 The final step was to implement interaction with the globe, 
 to allow the user to rotate to see all the crime data.
 
 This was done by rotating the camera around the globe,
 as this required less computational effort then moving all the data points.
-The final version allows the user to rotate the camera by clicking and dragging with the mouse.
+
+To do this camera was set to an initial vector of (100000, 0, 0),
+then updated when the user moves the mouse.
+This was done by using 2 angles, one for the x and y axis.
+These angles were called Phi and Theta.
+By changing these angles the camera will rotate around the earth.
+The math behind it is very similar to the math used to convert longitude
+and latitude coordinates to world coordinates.
+
+The trick to doing this was to update the angles according to mouse movement.
+The easiest way to do this was to calculate the mouse movement distance during
+each drag and adding that onto the respective angle, depending on the direction of the drag.
+
 
 \section{Results}
 
@@ -404,6 +430,9 @@ These provided a more realistic representation of the Earth.
 Lighting and cameras played a large part in the end product.
 The lighting is reflected on the planet, which makes a realistic looking ocean.
 
+The main light in the scene is the Sun, which was created using a directional light.
+This gave the effect of the sun rotating around the world to simulate a day and night cycle.
+
 \subsection{Transformations}
 
 Transformations were used to move the crime data points into the correct position around the globe.
@@ -413,6 +442,8 @@ Additionally transformations were used to move the camera and sun around the sce
 
 Overall the construction of this simulation went well,
 with all featured implemented as desired.
+I gained experience using a variety of computer graphics techniques in WebGL,
+such as 3D rendering, lighting, texturing and transformations.
 
 One improvement for the project is improving the performance of the application.
 This comes down to optimising the way the objects are drawn onto the canvas.
@@ -420,7 +451,7 @@ This current method involves a lot of drawing and then moving components, with
 some object references becoming lost from the renderer at some points, which
 caused a decrease in performance.
 
-Another improving is implementing time based data.
+Another improvment is implementing time based data.
 The dataset also contained data over time and it would be
 interesting to allow the user to select the time period and see how global crime changes over time.
 This could be done by redrawing the scene each time, but this was found to be too intensive.
@@ -429,6 +460,8 @@ of the crime areas, but this took too long so was excluded from the project.
 
 Another improvement is providing more data to the user, maybe in the form of a label over each
 data point so the user can see more detailed information about a particular city.
+This is more of a user interface feature than a computer graphics task, but would 
+provide value to the users.
 
 \section{Conclusion}
 
@@ -450,5 +483,8 @@ However overall the project achieves the purpose of providing an accessible visu
         Source code available at \url{https://github.com/r-portas/crime-globe}
     \end{center}
 \end{large}
+
+\bibliographystyle{abbrvurl}
+\bibliography{bibliography}
 
 \end{document}

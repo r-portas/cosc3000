@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+
+\bibitem{meshstandardmaterial_2017}
+Mesh standard material, threejs.
+\newblock URL:
+  \url{https://threejs.org/docs/#api/materials/MeshStandardMaterial}.
+
+\bibitem{physically_based_rendering}
+Physical based rendering.
+\newblock URL: \url{http://www.pbrt.org/}.
+
+\end{thebibliography}
