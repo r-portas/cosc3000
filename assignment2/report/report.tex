@@ -310,11 +310,87 @@ curl https://maps.googleapis.com/maps/api/geocode/json?address=Yerevan&key=$GOOG
 \end{verbatim}
 
 This was used in a python program to get the latitudes and longitudes for all cities in the dataset.
+The coordinates were than mapped to the city name and the crime rate for the city.
+The final result was exported as a json file that could be easily imported into the application.
+
+The next step was to convert the coordinates into something useable by the program.
+This required a bit of maths and angle calculations.
+
+\begin{lstlisting}[language=JavaScript]
+    convertToSphere(coords) {
+      const phi = (90 - coords[0]) * (Math.PI / 180);
+      const theta = (coords[1] + 180) * (Math.PI / 180);
+      const offset = 300;
+
+      const x = -((this.globeRadius + offset) * Math.sin(phi) * Math.cos(theta));
+      const y = ((this.globeRadius + offset) * Math.cos(phi));
+      const z = ((this.globeRadius + offset) * Math.sin(phi) * Math.sin(theta));
+
+      return new three.Vector3(x, y, z);
+    },
+\end{lstlisting}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.8\linewidth]{images/city_labels}
+   \caption{Cities with Labels}
+   \label{fig:city_labels}
+\end{figure}
+
+Figure~\ref{fig:city_labels} shows an overlay of city names on the globe.
+This was done using the coordinates from the convertToSphere function and just plotting a label onto the map.
+
+The next step was to draw a representation of crime at each of these coordinates,
+this was done by drawing a sphere over the location of the crime.
+The radius of the sphere is determined by the amount of crime in the area,
+with more crime having a larger sphere.
+
+The final step was to change the colour of the sphere depending on the amount of crime.
+This was simply done by changing the red value depending on the crime rate of the area.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.8\linewidth]{images/crime_spheres}
+   \caption{Crimes Displayed as Spheres}
+   \label{fig:crime_spheres}
+\end{figure}
+
+\subsection{User Interaction}
+
+The final step was to implement interaction with the globe, 
+to allow the user to rotate to see all the crime data.
+
+This was done by rotating the camera around the globe,
+as this required less computational effort then moving all the data points.
+The final version allows the user to rotate the camera by clicking and dragging with the mouse.
 
 \section{Results}
 
+The final result is hosted at \url{https://r-portas.github.io/crime-globe/}.
+Depending on internet connection speed the globe textures could take a while to download.
+
+There is also a git repo hosted at \url{https://github.com/r-portas/crime-globe} which contains the
+full commit history on the project and all source code.
+Build instructions are also in the repo.
+
 \section{Discussion}
 
+Overall the construction of this simulation went well.
+
+One improvement for the project is improving the performance of the application.
+This comes down to optimising the way the objects are drawn onto the canvas.
+This current method involves a lot of drawing and then moving components, with
+some object references becoming lost from the renderer at some points, which
+caused a decrease in performance.
+
+Another improving is implementing time based data.
+The dataset also contained data over time and it would be
+interesting to allow the user to select the time period and see how global crime changes over time.
+This could be done by redrawing the scene each time, but this was found to be too intensive.
+Thus the code will have to be refactored to support updating of the data and then scale the size
+of the crime areas, but this took too long so was excluded from the project.
+
 \section{Conclusion}
+
 
 \end{document}
