@@ -1,15 +1,17 @@
 \documentclass[]{article}
 
 \usepackage[margin=1.2in]{geometry} 
-\usepackage{url} 
-\usepackage{parskip}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{color}
+\usepackage{float}
 \usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{listings}
+\usepackage{parskip}
 \usepackage{subfig}
+\usepackage{url} 
 
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
@@ -267,6 +269,47 @@ The second light is a smaller light that follows the camera,
 allowing the globe to be visible when the sun is behind the Earth.
 This light will also be implemented as a directional light and will follow the camera around the scene.
 The target of this light will also be the Earth.
+
+\subsubsection{Orbiting Moon}
+
+The next step is to draw an orbitting moon around the Earth.
+This is similar to drawing the Earth, but also requires the moon to orbit the earth.
+The exact orbit will follow a simple equation, outlined below:
+
+\begin{align*}
+    x &= n \times sin(i)\\
+    y &= n \times cos(i)
+\end{align*}
+
+Where $n$ is the distance from the center of the Earth to the moon and $i$ is the time.
+
+After implementing this the next step was to set up the shadows of the moon.
+This requires three parts:
+
+\begin{itemize}
+    \item The renderer - Does all the computation
+    \item The Sun - Which casts shadows
+    \item The moon and Earth - Which receives the lights and shadows
+\end{itemize}
+
+\subsubsection{Displaying Crime Data}
+
+The next step is to display the crime data on the globe.
+This data was acquired from Knoema, available here \url{https://knoema.com/CMI2017/crime-index-by-country-2017}.
+The data was given in a CSV format with city name, and crime value as columns.
+The crime value is a index of how much crime happens in the city, which ranges between
+0 for no crime and 100 for the most crime activity.
+
+The first step was to convert the city names to longitude and latitude values,
+this was done using the Google Geocoding API.
+
+Below is a sample HTTP request for getting the longitude and latitude from the location.
+
+\begin{verbatim}
+curl https://maps.googleapis.com/maps/api/geocode/json?address=Yerevan&key=$GOOGLE_API_KEY
+\end{verbatim}
+
+This was used in a python program to get the latitudes and longitudes for all cities in the dataset.
 
 \section{Results}
 
