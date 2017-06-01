@@ -46,6 +46,10 @@
 
 \section{Introduction}
 
+Crime occurs all around the world and is caused by many factors.
+Knowing crime rates of cities is useful for travellers planning journeys, thus it would be useful to provide a
+method to visualize this.
+
 The aim of this project is to create a web based visualization of global crime data.
 This will be done through a 3D model of a globe with crime data superimposed on top of it.
 
@@ -57,7 +61,7 @@ The visualization aims to be a easy to use tool for the general public to view c
 
 Data was acquired from the website [website].
 
-Before building the web app, research was done on existing solutions, such as Google Earth\cite{} and Marble\cite{}.
+Before building the web app, research was done on existing solutions, such as Google Earth and Marble.
 
 From looking at existing solutions, some common functionality was found
 
@@ -92,7 +96,12 @@ The complete model will consist of the following elements:
 
 Thus the model can be representing in the following hierarchy:
 
-INSERT TREE DIAGRAM
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\linewidth]{images/object_hierachy}
+   \caption{Object Hierarchy}
+   \label{fig:object_hierarchy}
+\end{figure}
 
 \subsection{Version 1: Pure WebGL}
 
@@ -270,6 +279,15 @@ allowing the globe to be visible when the sun is behind the Earth.
 This light will also be implemented as a directional light and will follow the camera around the scene.
 The target of this light will also be the Earth.
 
+After lighting the specular map was implemented.
+Specular maps control the reflectiveness of an object.
+It works similar to a bump map, being a grey scale image with white being reflective
+and black being non reflective.
+This allows an object to have areas of more reflectiveness,
+which in our case will be the ocean.
+Land will be represented as less reflective.
+This makes the globe seem more realistic.
+
 \subsubsection{Orbiting Moon}
 
 The next step is to draw an orbitting moon around the Earth.
@@ -373,9 +391,28 @@ There is also a git repo hosted at \url{https://github.com/r-portas/crime-globe}
 full commit history on the project and all source code.
 Build instructions are also in the repo.
 
+This project employed a lot of the computer graphics techniques covered through this course, outlined below.
+
+\subsection{Texturing Models}
+
+Texturing models was important for rendering a realistic looking version of the Earth.
+For this project 3 textures were used, a texture map, bump map and specular map.
+These provided a more realistic representation of the Earth.
+
+\subsection{Lighting and Cameras}
+
+Lighting and cameras played a large part in the end product.
+The lighting is reflected on the planet, which makes a realistic looking ocean.
+
+\subsection{Transformations}
+
+Transformations were used to move the crime data points into the correct position around the globe.
+Additionally transformations were used to move the camera and sun around the scene.
+
 \section{Discussion}
 
-Overall the construction of this simulation went well.
+Overall the construction of this simulation went well,
+with all featured implemented as desired.
 
 One improvement for the project is improving the performance of the application.
 This comes down to optimising the way the objects are drawn onto the canvas.
@@ -390,7 +427,28 @@ This could be done by redrawing the scene each time, but this was found to be to
 Thus the code will have to be refactored to support updating of the data and then scale the size
 of the crime areas, but this took too long so was excluded from the project.
 
+Another improvement is providing more data to the user, maybe in the form of a label over each
+data point so the user can see more detailed information about a particular city.
+
 \section{Conclusion}
 
+The final version of the software is available at \url{https://r-portas.github.io/crime-globe/}.
+The software is fully functional and runs on any modern browser.
+The project has implemented many of the methods taught throughout the course
+and proved to be a value learning experience in developing 3D equations.
+
+There are some improvements that can be made, mostly around the optimization of the software 
+such that it runs better on slower devices.
+However overall the project achieves the purpose of providing an accessible visualization of crime data.
+
+\break
+
+\begin{large}
+    \begin{center}
+        Final product available at \url{https://r-portas.github.io/crime-globe/}
+
+        Source code available at \url{https://github.com/r-portas/crime-globe}
+    \end{center}
+\end{large}
 
 \end{document}
